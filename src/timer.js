@@ -1,9 +1,13 @@
 export default class Timer{
     constructor(root){
         this.root = timer.getHTML;
-        this.time = 0;
-        this.interval = null;
-        this.render();
+        this.el = {
+            minutes: root.querySelector('.timer__time.--minutes'),
+            seconds: root.querySelector('.timer__time.--seconds'),
+            control: root.querySelector('.timer__button.--control'),
+            reset: root.querySelector('.timer__button.--reset'),
+        };
+        console.log(this.el);
     }
     static getHTML(){
         return `
