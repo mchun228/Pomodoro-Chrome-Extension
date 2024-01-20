@@ -5,6 +5,7 @@ function App() {
 
 
   const [timeLeft, setTimeLeft] = React.useState(25 * 60);
+  const [isActive, setActive] = React.useState(false);
   useEffect(() => {
     // Update the timer every second
     const timer = setInterval(() => {
@@ -26,6 +27,14 @@ function App() {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
+  const toggleTimer = () => {
+    setActive(!isActive);
+  };
+
+  const resetTimer = () => {
+    setTimeLeft(25 * 60);
+    setActive(false);
+  };
   return (
     <div className="App">
       <h1>Pomodoro Stopwatch</h1>
@@ -38,6 +47,12 @@ function App() {
         <span className="base-timer__label">
           {format(timeLeft)}
         </span>
+      </div>
+      <div>
+        <button onClick={toggleTimer}>
+          {isActive ? 'Pause' : 'Start'}
+        </button>
+        <button onClick={resetTimer}>Reset</button>
       </div>
     </div>
   );
